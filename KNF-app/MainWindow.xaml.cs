@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KNF_app.VM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,9 @@ namespace KNF_app
     {
         public MainWindow()
         {
+            MainWinViewModel viewModel = new MainWinViewModel();
+
+            DataContext = viewModel;
             InitializeComponent();
         }
     }
