@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.PlatformUI;
+﻿using KNF_app.Models;
+using Microsoft.VisualStudio.PlatformUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -64,7 +65,9 @@ namespace KNF_app.VM
 
         private void SetInstrument()
         {
-            MessageBox.Show("This binded");
+            List<string> temp = ListOfOpenStrings.Split(',').ToList();
+
+            Instrument instru = new Instrument(MaxFret, temp);
         }
     }
 }
