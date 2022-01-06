@@ -12,11 +12,15 @@ namespace KNF_app.Utils
         public const int HALF_STEP = 1;
         public const int MAX_NOTES_IN_SCALE = 8;
         public List<string> OrderOfNotes = new List<string>()
-                                         { "A", "A#", "B", 
-                                           "C", "C#", "D",
-                                           "D#", "E", "F", 
-                                           "F#", "G", "G#"
-                                         };
+        {   "A", "A#", "B", 
+            "C", "C#", "D",
+            "D#", "E", "F", 
+            "F#", "G", "G#"
+        };
+        public List<string> ALL_MAJOR_SCALES = new List<string>
+        {
+            "C", "G", "D", "A", "E", "B", "F#", "C#"
+        };
 
         public Utility() { }
 

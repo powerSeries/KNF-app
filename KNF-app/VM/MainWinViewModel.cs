@@ -1,7 +1,9 @@
 ﻿using KNF_app.Models;
+using KNF_app.Utils;
 using Microsoft.VisualStudio.PlatformUI;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -15,7 +17,13 @@ namespace KNF_app.VM
     {
         #region Private variables
         private int _maxFret;
+        private int _selectKeyIndex;
         private string _listOfOpenStrings;
+        private string _selectedKey;
+        private string _scaleResult;
+        
+        private ObservableCollection<string> _allScales;
+        private Utility utility;
         #endregion
 
         #region Public property
@@ -36,6 +44,48 @@ namespace KNF_app.VM
             {
                 _listOfOpenStrings = value;
                 OnPropertyChanged("ListOfOpenStrings");
+            }
+        }
+
+        public ObservableCollection<string> AllScales
+        {
+            get => _allScales;
+            set
+            {
+                _allScales = value;
+                OnPropertyChanged("AllScales");
+            }
+        }
+
+        public string SelectedKey
+        {
+            get => _selectedKey;
+            set
+            {
+                _selectedKey = value;
+                ChangeKey();
+                OnPropertyChanged("SelectedKey");
+            }
+
+        }
+
+        public int SelectKeyIndex
+        {
+            get => _selectKeyIndex;
+            set
+            {
+                _selectKeyIndex = value;
+                OnPropertyChanged("SelectKeyIndex");
+            }
+        }
+
+        public string ScaleResult
+        {
+            get => _scaleResult;
+            set
+            {
+                _scaleResult = value;
+                OnPropertyChanged("ScaleResult");
             }
         }
         #endregion
@@ -59,9 +109,22 @@ namespace KNF_app.VM
         #endregion
 
         public MainWinViewModel()
-        { 
-
+        {
+            Initialize();
         }
+
+        #region Public methods
+
+        #endregion
+
+        #region Private methods
+        private void Initialize()
+        {
+            utility = new Utility();
+
+            AllScales = new ObservableCollection<string>(utility.ALL_MAJOR_SCALES);
+        }
+
 
         private void SetInstrument()
         {
@@ -69,5 +132,18 @@ namespace KNF_app.VM
 
             Instrument instru = new Instrument(MaxFret, temp);
         }
+
+        private void ChangeKey()
+        {
+            Models.Key key = new Models.Key(SelectedKey);
+            string temp = "";
+            foreach(var item in key.Scale)
+            {
+                temp += item + ", ";
+            }
+
+            ScaleResult = temp;
+        }
+        #endregion
     }
 }

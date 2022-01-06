@@ -31,9 +31,5 @@ namespace KNF_app.Models
                 ListOfAllNotes.Add(openString);
             }
         }
-
-
-
-        
     }
 }
