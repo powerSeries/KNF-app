@@ -21,5 +21,10 @@ namespace KNF_app.Models
         {
             Notes = new Notes(openNote, maxFret);
         }
+
+        public void FindKeyNotes(Models.Key activeKey)
+        {
+            Notes.FindNotesInKey(activeKey);
+        }
     }
 }

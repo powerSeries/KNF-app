@@ -21,9 +21,14 @@ namespace KNF_app.VM
         private string _listOfOpenStrings;
         private string _selectedKey;
         private string _scaleResult;
-        
-        private ObservableCollection<string> _allScales;
+
         private Utility utility;
+        private ObservableCollection<string> _allScales;
+        private ObservableCollection<string> _listOfAllKeyNotes;
+        private ObservableCollection<string> _listOfAllNotes;
+
+        private Instrument instrument;
+        private Models.Key key;
         #endregion
 
         #region Public property
@@ -54,6 +59,26 @@ namespace KNF_app.VM
             {
                 _allScales = value;
                 OnPropertyChanged("AllScales");
+            }
+        }
+
+        public ObservableCollection<string> ListOfAllKeyNotes
+        {
+            get => _listOfAllKeyNotes;
+            set
+            {
+                _listOfAllKeyNotes = value;
+                OnPropertyChanged("ListOfAllKeyNotes");
+            }
+        }
+
+        public ObservableCollection<string> ListOfAllNotes
+        {
+            get => _listOfAllNotes;
+            set
+            {
+                _listOfAllNotes = value;
+                OnPropertyChanged("ListOfAllNotes");
             }
         }
 
@@ -95,6 +120,11 @@ namespace KNF_app.VM
         {
             get { return new DelegateCommand(SetInstrument); }
         }
+
+        public ICommand SetInstrumentKeyCommand
+        {
+            get { return new DelegateCommand(SetInstrumentKey); }
+        }
         #endregion
 
         #region Events
@@ -130,12 +160,50 @@ namespace KNF_app.VM
         {
             List<string> temp = ListOfOpenStrings.Split(',').ToList();
 
-            Instrument instru = new Instrument(MaxFret, temp);
+            instrument = new Instrument(MaxFret, temp);
+
+            ListOfAllNotes = new ObservableCollection<string>();
+
+            for (int i = 0; i < instrument.ListOfAllNotes.Count; i++)
+            {
+                ListOfAllNotes.Add(StringBuilder(instrument.ListOfAllNotes[i].Notes.AllNotes));
+            }
+
+            OnPropertyChanged("ListOfAllNotes");
+        }
+
+        private void SetInstrumentKey()
+        {
+            instrument.CurrentKey = key;
+
+            if(instrument.CurrentKey == null)
+            {
+                MessageBox.Show("Please select a valid Key");
+                return;
+            }
+            else if(instrument == null)
+            {
+                MessageBox.Show("Please create a valid instrument.");
+                return;
+            }
+
+            instrument.KeyNoteFinder();
+
+            ListOfAllKeyNotes = new ObservableCollection<string>();
+            OnPropertyChanged("ListOfAllKeyNotes");
+
+            for (int i = 0; i < instrument.ListOfAllNotes.Count; i++)
+            {
+                ListOfAllKeyNotes.Add(StringBuilder(instrument.ListOfAllNotes[i].Notes.AllKeyNotes));
+            }
+
+            OnPropertyChanged("ListOfAllKeyNotes");
         }
 
         private void ChangeKey()
         {
-            Models.Key key = new Models.Key(SelectedKey);
+            key = new Models.Key(SelectedKey);
+                      
             string temp = "";
             foreach(var item in key.Scale)
             {
@@ -143,6 +211,20 @@ namespace KNF_app.VM
             }
 
             ScaleResult = temp;
+        }
+
+        private string StringBuilder(List<string> data)
+        {
+            string temp = "";
+            temp += "[";
+
+            foreach(var item in data)
+            {
+                temp += item + ", ";
+            }
+            temp += "]";
+
+            return temp;
         }
         #endregion
     }

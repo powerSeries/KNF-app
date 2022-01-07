@@ -10,13 +10,16 @@ namespace KNF_app.Models
     {
         public int TotalFrets { get; set; }
 
-        public List<OpenStrings>? ListOfAllNotes { get; set; }
+        public Key CurrentKey { get; set; }
+
+        public List<OpenStrings> ListOfAllNotes { get; set; }
 
         public Instrument() { }
 
         public Instrument(int maxFret, List<string> listOfOpenNotes)
         {
             TotalFrets = maxFret;
+            ListOfAllNotes = new List<OpenStrings>();
             Initialize(listOfOpenNotes);
         }
 
@@ -29,6 +32,14 @@ namespace KNF_app.Models
             {
                 OpenStrings openString = new OpenStrings(openNote, TotalFrets);
                 ListOfAllNotes.Add(openString);
+            }
+        }
+
+        public void KeyNoteFinder()
+        {
+            foreach(var item in ListOfAllNotes)
+            {
+                item.FindKeyNotes(CurrentKey);
             }
         }
     }

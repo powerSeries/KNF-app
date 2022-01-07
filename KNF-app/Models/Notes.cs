@@ -9,9 +9,9 @@ namespace KNF_app.Models
 {
     public class Notes
     {
-        public List<string>? AllNotes { get; set; }
+        public List<string> AllNotes { get; set; }
 
-        public List<string>? AllKeyNotes { get; set; }
+        public List<string> AllKeyNotes { get; set; }
 
         public Notes() 
         { 
@@ -27,11 +27,31 @@ namespace KNF_app.Models
         private void InitializeAllNotes(string openNote, int maxFret)
         {
             if(AllNotes == null)
+            {
                 AllNotes = new List<string>();
+            }
+                
 
             Utility utils = new Utility();
 
             AllNotes = utils.FillOpenStringNotes(openNote, maxFret);
+        }
+
+        public void FindNotesInKey(Models.Key activeKey)
+        {
+            AllKeyNotes = new List<string>();
+
+            foreach (var note in AllNotes)
+            {
+                if(activeKey.Scale.Contains(note))
+                {
+                    AllKeyNotes.Add(note);
+                }
+                else
+                {
+                    AllKeyNotes.Add("-");
+                }
+            }
         }
     }
 }
