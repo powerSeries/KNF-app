@@ -41,16 +41,19 @@ namespace KNF_app.Models
         {
             AllKeyNotes = new List<string>();
 
+            int count = 0;
             foreach (var note in AllNotes)
             {
                 if(activeKey.Scale.Contains(note))
                 {
-                    AllKeyNotes.Add(note);
+                    AllKeyNotes.Add(count.ToString());
                 }
                 else
                 {
                     AllKeyNotes.Add("-");
                 }
+
+                count++;
             }
         }
     }
