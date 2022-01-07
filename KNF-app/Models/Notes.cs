@@ -13,6 +13,8 @@ namespace KNF_app.Models
 
         public List<string> AllKeyNotes { get; set; }
 
+        public List<string> AllKeyNotes_Tab { get; set; }
+
         public Notes() 
         { 
             AllNotes = new List<string>();
@@ -40,17 +42,20 @@ namespace KNF_app.Models
         public void FindNotesInKey(Models.Key activeKey)
         {
             AllKeyNotes = new List<string>();
+            AllKeyNotes_Tab = new List<string>();
 
             int count = 0;
             foreach (var note in AllNotes)
             {
                 if(activeKey.Scale.Contains(note))
                 {
-                    AllKeyNotes.Add(count.ToString());
+                    AllKeyNotes.Add(note);
+                    AllKeyNotes_Tab.Add(count.ToString());
                 }
                 else
                 {
                     AllKeyNotes.Add("-");
+                    AllKeyNotes_Tab.Add("-");
                 }
 
                 count++;
