@@ -28,5 +28,10 @@ namespace KNF_app
             DataContext = viewModel;
             InitializeComponent();
         }
+
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

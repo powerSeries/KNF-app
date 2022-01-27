@@ -54,17 +54,6 @@ namespace KNF_app.VM
             }
         }
 
-        public bool DisplayTabs
-        {
-            get => _displayTabs;
-            set
-            {
-                _displayTabs = value;
-                ChangeToTab();
-                OnPropertyChanged("DisplayTabs");
-            }
-        }
-
         public string DisplayTabsResult
         {
             get => _displayTabsResult;
@@ -187,14 +176,14 @@ namespace KNF_app.VM
 
             instrument = new Instrument(MaxFret, temp);
 
-            ListOfAllNotes = new ObservableCollection<string>();
+            //ListOfAllNotes = new ObservableCollection<string>();
 
-            for (int i = 0; i < instrument.ListOfAllNotes.Count; i++)
-            {
-                ListOfAllNotes.Add(StringBuilder(instrument.ListOfAllNotes[i].Notes.AllNotes));
-            }
+            //for (int i = 0; i < instrument.ListOfAllNotes.Count; i++)
+            //{
+            //    ListOfAllNotes.Add(StringBuilder(instrument.ListOfAllNotes[i].Notes.AllNotes));
+            //}
 
-            OnPropertyChanged("ListOfAllNotes");
+            //OnPropertyChanged("ListOfAllNotes");
         }
 
         private void SetInstrumentKey()
@@ -215,46 +204,31 @@ namespace KNF_app.VM
             instrument.KeyNoteFinder();
 
             ListOfAllKeyNotes = new ObservableCollection<string>();
-            UpdateListOfKeyNotes(instrument.ListOfAllNotes, DisplayTabs);
+            UpdateListOfKeyNotes(instrument.ListOfAllNotes);
             OnPropertyChanged("ListOfAllKeyNotes");
         }
 
-        private void ChangeToTab()
+        private void UpdateListOfKeyNotes(List<OpenStrings> data)
         {
-            if(DisplayTabs)
-            {
-                DisplayTabsResult = "Tab Mode";
-            }
-            else
-            {
-                DisplayTabsResult = "Note Mode";
-            }
-        }
-
-        private void UpdateListOfKeyNotes(List<OpenStrings> data, bool IsTab)
-        {
-            ChangeToTab();
             ListOfAllKeyNotes = new ObservableCollection<string>();
-            OnPropertyChanged("ListOfAllKeyNotes");
+            ListOfAllNotes = new ObservableCollection<string>();
 
-            if(IsTab)
+
+            for (int i = 0; i < data.Count; i++)
             {
-                for (int i = 0; i < data.Count; i++)
-                {
-                    ListOfAllKeyNotes.Add(StringBuilder(data[i].Notes.AllKeyNotes_Tab));
-                }
-                
-                return;
+                ListOfAllKeyNotes.Add(StringBuilder(data[i].Notes.AllKeyNotes_Tab));
             }
-            else
+
+            for (int i = 0; i < instrument.ListOfAllNotes.Count; i++)
             {
-                for (int i = 0; i < instrument.ListOfAllNotes.Count; i++)
-                {
-                    ListOfAllKeyNotes.Add(StringBuilder(data[i].Notes.AllKeyNotes));
-                }
-                
-                return;
+                ListOfAllNotes.Add(StringBuilder(data[i].Notes.AllKeyNotes));
             }
+
+            ListOfAllKeyNotes.Reverse();
+            ListOfAllNotes.Reverse();
+
+            OnPropertyChanged("ListOfAllKeyNotes");
+            OnPropertyChanged("ListOfAllNotes");
         }
 
         private void ChangeKey()
