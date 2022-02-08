@@ -119,3 +119,16 @@ C:\Users\infam\source\repos\KNF-app\KNF-app\obj\Release\net6.0-windows\KNF-app.d
 C:\Users\infam\source\repos\KNF-app\KNF-app\obj\Release\net6.0-windows\ref\KNF-app.dll
 C:\Users\infam\source\repos\KNF-app\KNF-app\obj\Release\net6.0-windows\KNF-app.pdb
 C:\Users\infam\source\repos\KNF-app\KNF-app\obj\Release\net6.0-windows\KNF-app.genruntimeconfig.cache
+C:\Users\infam\source\repos\KNF-app\KNF-app\bin\Release\net6.0-windows\NetSparkle.dll
+C:\Users\infam\source\repos\KNF-app\KNF-app\bin\Release\net6.0-windows\NetSparkle.UI.WPF.dll
+C:\Users\infam\source\repos\KNF-app\KNF-app\bin\Release\net6.0-windows\NSec.Cryptography.dll
+C:\Users\infam\source\repos\KNF-app\KNF-app\bin\Release\net6.0-windows\BouncyCastle.Crypto.dll
+C:\Users\infam\source\repos\KNF-app\KNF-app\bin\Release\net6.0-windows\runtimes\linux-musl-x64\native\libsodium.so
+C:\Users\infam\source\repos\KNF-app\KNF-app\bin\Release\net6.0-windows\runtimes\linux-x64\native\libsodium.so
+C:\Users\infam\source\repos\KNF-app\KNF-app\bin\Release\net6.0-windows\runtimes\osx-x64\native\libsodium.dylib
+C:\Users\infam\source\repos\KNF-app\KNF-app\bin\Release\net6.0-windows\runtimes\win-x64\native\libsodium.dll
+C:\Users\infam\source\repos\KNF-app\KNF-app\bin\Release\net6.0-windows\runtimes\win-x86\native\libsodium.dll
+C:\Users\infam\source\repos\KNF-app\KNF-app\bin\Release\net6.0-windows\KNF-app.dll.manifest
+C:\Users\infam\source\repos\KNF-app\KNF-app\bin\Release\net6.0-windows\KNF-app.application
+C:\Users\infam\source\repos\KNF-app\KNF-app\obj\Release\net6.0-windows\KNF-app.dll.manifest
+C:\Users\infam\source\repos\KNF-app\KNF-app\obj\Release\net6.0-windows\KNF-app.application

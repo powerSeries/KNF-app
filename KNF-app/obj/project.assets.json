@@ -2,6 +2,34 @@
   "version": 3,
   "targets": {
     "net6.0-windows7.0": {
+      "libsodium/1.0.18": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1"
+        },
+        "runtimeTargets": {
+          "runtimes/linux-musl-x64/native/libsodium.so": {
+            "assetType": "native",
+            "rid": "linux-musl-x64"
+          },
+          "runtimes/linux-x64/native/libsodium.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-x64/native/libsodium.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-x64/native/libsodium.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/libsodium.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
       "MessagePack/2.2.85": {
         "type": "package",
         "dependencies": {
@@ -497,6 +525,37 @@
           "lib/netcoreapp3.1/Nerdbank.Streams.dll": {}
         }
       },
+      "NetSparkleUpdater.SparkleUpdater/2.0.9": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Win32.Registry": "5.0.0",
+          "NSec.Cryptography": "20.2.0",
+          "Portable.BouncyCastle": "1.9.0",
+          "System.Text.Json": "5.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/NetSparkle.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/NetSparkle.dll": {}
+        }
+      },
+      "NetSparkleUpdater.UI.WPF/2.0.9": {
+        "type": "package",
+        "dependencies": {
+          "NetSparkleUpdater.SparkleUpdater": "2.0.9",
+          "System.Drawing.Common": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0-windows7.0/NetSparkle.UI.WPF.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows7.0/NetSparkle.UI.WPF.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
       "Newtonsoft.Json/12.0.2": {
         "type": "package",
         "compile": {
@@ -504,6 +563,28 @@
         },
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "NSec.Cryptography/20.2.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "4.7.0",
+          "libsodium": "[1.0.18, 1.0.19)"
+        },
+        "compile": {
+          "lib/netstandard2.1/NSec.Cryptography.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/NSec.Cryptography.dll": {}
+        }
+      },
+      "Portable.BouncyCastle/1.9.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
         }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
@@ -1691,6 +1772,15 @@
           "ref/netstandard1.3/_._": {}
         }
       },
+      "System.Text.Json/5.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.0/System.Text.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.Text.Json.dll": {}
+        }
+      },
       "System.Threading/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1820,6 +1910,25 @@
     }
   },
   "libraries": {
+    "libsodium/1.0.18": {
+      "sha512": "Ajv3AR9Qg/C4SQcE2ONx/UieeKnn5lSvVNc6egC3p6NP6qjZzWJ+Xg2vJURNYjkpHui/KctBwQjMPqpZK8/CHA==",
+      "type": "package",
+      "path": "libsodium/1.0.18",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "AUTHORS",
+        "ChangeLog",
+        "LICENSE",
+        "libsodium.1.0.18.nupkg.sha512",
+        "libsodium.nuspec",
+        "runtimes/linux-musl-x64/native/libsodium.so",
+        "runtimes/linux-x64/native/libsodium.so",
+        "runtimes/osx-x64/native/libsodium.dylib",
+        "runtimes/win-x64/native/libsodium.dll",
+        "runtimes/win-x86/native/libsodium.dll"
+      ]
+    },
     "MessagePack/2.2.85": {
       "sha512": "3SqAgwNV5LOf+ZapHmjQMUc7WDy/1ur9CfFNjgnfMZKCB5CxkVVbyHa06fObjGTEHZI7mcDathYjkI+ncr92ZQ==",
       "type": "package",
@@ -2491,6 +2600,42 @@
         "nerdbank.streams.nuspec"
       ]
     },
+    "NetSparkleUpdater.SparkleUpdater/2.0.9": {
+      "sha512": "LoQ827dH6VGc8YDk2I7URtR+Bw7HtUwj4ICJwHk0VR18PDI61OHlf8Y7M57sVgQWB+6NHE9dfxDPnGIMhw4ccg==",
+      "type": "package",
+      "path": "netsparkleupdater.sparkleupdater/2.0.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net452/NetSparkle.dll",
+        "lib/net452/NetSparkle.xml",
+        "lib/netstandard2.0/NetSparkle.dll",
+        "lib/netstandard2.0/NetSparkle.xml",
+        "netsparkleupdater.sparkleupdater.2.0.9.nupkg.sha512",
+        "netsparkleupdater.sparkleupdater.nuspec",
+        "software-update-available.png"
+      ]
+    },
+    "NetSparkleUpdater.UI.WPF/2.0.9": {
+      "sha512": "EwJ/ssR5/xvHtGj5FDnBB0aEPWDuHRRAikYne7vlYIwN8kDT3ROPKS3UO0r3ghhKwK8mlOXb+Ogd8wuWPAU4IQ==",
+      "type": "package",
+      "path": "netsparkleupdater.ui.wpf/2.0.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net452/NetSparkle.UI.WPF.dll",
+        "lib/net452/NetSparkle.UI.WPF.xml",
+        "lib/net5.0-windows7.0/NetSparkle.UI.WPF.dll",
+        "lib/net5.0-windows7.0/NetSparkle.UI.WPF.xml",
+        "lib/netcoreapp3.1/NetSparkle.UI.WPF.dll",
+        "lib/netcoreapp3.1/NetSparkle.UI.WPF.xml",
+        "netsparkleupdater.ui.wpf.2.0.9.nupkg.sha512",
+        "netsparkleupdater.ui.wpf.nuspec",
+        "software-update-available.png"
+      ]
+    },
     "Newtonsoft.Json/12.0.2": {
       "sha512": "rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
       "type": "package",
@@ -2519,6 +2664,37 @@
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "newtonsoft.json.12.0.2.nupkg.sha512",
         "newtonsoft.json.nuspec"
+      ]
+    },
+    "NSec.Cryptography/20.2.0": {
+      "sha512": "NxzHaDQm3JfH+9VQdLI1bC4h/ZTKPo5o/4BEscBu4KK0Yv35sB87hSRuzpr09VahxY5ZpJfE2tHyK4u27jfiyQ==",
+      "type": "package",
+      "path": "nsec.cryptography/20.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "NOTICE",
+        "lib/netstandard2.0/NSec.Cryptography.dll",
+        "lib/netstandard2.1/NSec.Cryptography.dll",
+        "nsec.cryptography.20.2.0.nupkg.sha512",
+        "nsec.cryptography.nuspec",
+        "nsec.png"
+      ]
+    },
+    "Portable.BouncyCastle/1.9.0": {
+      "sha512": "eZZBCABzVOek+id9Xy04HhmgykF0wZg9wpByzrWN7q8qEI0Qen9b7tfd7w8VA3dOeesumMG7C5ZPy0jk7PSRHw==",
+      "type": "package",
+      "path": "portable.bouncycastle/1.9.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/BouncyCastle.Crypto.dll",
+        "lib/net40/BouncyCastle.Crypto.xml",
+        "lib/netstandard2.0/BouncyCastle.Crypto.dll",
+        "lib/netstandard2.0/BouncyCastle.Crypto.xml",
+        "portable.bouncycastle.1.9.0.nupkg.sha512",
+        "portable.bouncycastle.nuspec"
       ]
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
@@ -5435,6 +5611,28 @@
         "system.text.encoding.extensions.nuspec"
       ]
     },
+    "System.Text.Json/5.0.2": {
+      "sha512": "I47dVIGiV6SfAyppphxqupertT/5oZkYLDCX6vC3HpOI4ZLjyoKAreUoem2ie6G0RbRuFrlqz/PcTQjfb2DOfQ==",
+      "type": "package",
+      "path": "system.text.json/5.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Text.Json.dll",
+        "lib/net461/System.Text.Json.xml",
+        "lib/netcoreapp3.0/System.Text.Json.dll",
+        "lib/netcoreapp3.0/System.Text.Json.xml",
+        "lib/netstandard2.0/System.Text.Json.dll",
+        "lib/netstandard2.0/System.Text.Json.xml",
+        "system.text.json.5.0.2.nupkg.sha512",
+        "system.text.json.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.Threading/4.3.0": {
       "sha512": "VkUS0kOBcUf3Wwm0TSbrevDDZ6BlM+b/HRiapRFWjM5O0NS0LviG0glKmFK+hhPDd1XFeSdU1GmlLhb2CoVpIw==",
       "type": "package",
@@ -5816,7 +6014,8 @@
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
-      "Microsoft.VisualStudio.Utilities >= 17.0.31902.203"
+      "Microsoft.VisualStudio.Utilities >= 17.0.31902.203",
+      "NetSparkleUpdater.UI.WPF >= 2.0.9"
     ]
   },
   "packageFolders": {
@@ -5861,6 +6060,10 @@
           "Microsoft.VisualStudio.Utilities": {
             "target": "Package",
             "version": "[17.0.31902.203, )"
+          },
+          "NetSparkleUpdater.UI.WPF": {
+            "target": "Package",
+            "version": "[2.0.9, )"
           }
         },
         "imports": [
